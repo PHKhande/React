@@ -1,25 +1,13 @@
 import React from 'react';
 import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
+import ExpenseDetails from './ExpenseDetails';
 
 const ExpenseItem = ({expense}) => {
-  // const Month = expense.date.getMonth() + 1;
-  // const Day = expense.date.getDate();
-  // const Year = expense.date.getFullYear();
-  const Year = expense.date.toISOString();
-
   return (
     <div className='expense-item'>
-      <div>
-        {/* <div>{Day}</div>
-        <div>{Month}</div> */}
-        <div>{Year}</div>
-      </div>
-
-      <div className='expense-item__description'>
-        <h2>{expense.title}</h2>
-        <h2>{expense.LocationOfExpenditure}</h2>
-        <div className='expense-item__price'>{expense.amount}</div>
-      </div>
+      <ExpenseDate date = {expense.date}/>
+      <ExpenseDetails title={expense.title} location={expense.LocationOfExpenditure} amount={expense.amount}/>
     </div>
   )
 };
