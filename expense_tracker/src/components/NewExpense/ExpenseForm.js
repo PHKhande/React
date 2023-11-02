@@ -12,8 +12,13 @@ const ExpenseForm = () => {
   const changeDateHandler = (e) => setEnteredDate(e.target.value);
   const changeLocationHandler = (e) => setEnteredLocation(e.target.value);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log({ enteredTitle, enteredAmount, enteredDate, enteredLocation });
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="new-expense__control">
         <label className="new-expense__controls">Title</label>
         <input value={enteredTitle} onChange={changeTitleHandler} />
