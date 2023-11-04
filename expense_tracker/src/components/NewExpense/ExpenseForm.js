@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = ({ onSaveExpense}) => {
-
+const ExpenseForm = ({ onSaveExpense }) => {
   const [booleanAddExpense, setBooleanAddExpense] = useState(false);
 
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -17,7 +16,7 @@ const ExpenseForm = ({ onSaveExpense}) => {
 
   const expenseData = {
     title: enteredTitle,
-    amount: enteredAmount,
+    amount: +enteredAmount,
     date: new Date(enteredDate),
     LocationOfExpenditure: enteredLocation,
   };
@@ -27,7 +26,7 @@ const ExpenseForm = ({ onSaveExpense}) => {
     setEnteredAmount("");
     setEnteredDate("");
     setEnteredLocation("");
-  }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -39,15 +38,15 @@ const ExpenseForm = ({ onSaveExpense}) => {
     e.preventDefault();
     setBooleanAddExpense(false);
     clearForm();
-  }
+  };
 
   const addHandler = (e) => {
     e.preventDefault();
     setBooleanAddExpense(true);
-  }
+  };
 
-  if (!booleanAddExpense){
-    return <button onClick={addHandler}> Add New Expense </button>
+  if (!booleanAddExpense) {
+    return <button onClick={addHandler}> Add New Expense </button>;
   }
 
   return (

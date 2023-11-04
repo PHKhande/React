@@ -4,7 +4,6 @@ import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 
 const ExpenseItem = ({ expense }) => {
-
   return (
     <Card className="expense-item">
       <ExpenseDate date={expense.date} />

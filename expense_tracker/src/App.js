@@ -6,11 +6,15 @@ import { expenses } from "./constants/constants";
 function App() {
   const [allExpenses, setAllExpenses] = useState(expenses);
 
-  const addExpenseHandler = (expenseData) => {setAllExpenses((prev) => {return [...prev, expenseData]})};
+  const addExpenseHandler = (expenseData) => {
+    setAllExpenses((prev) => {
+      return [...prev, expenseData];
+    });
+  };
   return (
     <>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses allExpenses={allExpenses}/>
+      <Expenses allExpenses={allExpenses} />
     </>
   );
 }

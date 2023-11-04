@@ -18,13 +18,13 @@ export const expenses = [
     title: "Car Insurance",
     amount: 294.67,
     date: new Date(2021, 2, 28),
-    LocationOfExpenditure: "Phonepe"
+    LocationOfExpenditure: "Phonepe",
   },
   {
     id: "e4",
     title: "New Desk (Wooden)",
     amount: 450,
     date: new Date(2021, 5, 12),
-    LocationOfExpenditure: "IKEA"
+    LocationOfExpenditure: "IKEA",
   },
 ];
