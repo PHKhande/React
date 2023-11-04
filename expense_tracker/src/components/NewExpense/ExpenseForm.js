@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = ({ onSaveExpense }) => {
+const ExpenseForm = ({ onSaveExpense}) => {
+
+  const [booleanAddExpense, setBooleanAddExpense] = useState(false);
+
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -19,14 +22,33 @@ const ExpenseForm = ({ onSaveExpense }) => {
     LocationOfExpenditure: enteredLocation,
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    onSaveExpense(expenseData);
+  const clearForm = () => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
     setEnteredLocation("");
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onSaveExpense(expenseData);
+    clearForm();
   };
+
+  const cancelHandler = (e) => {
+    e.preventDefault();
+    setBooleanAddExpense(false);
+    clearForm();
+  }
+
+  const addHandler = (e) => {
+    e.preventDefault();
+    setBooleanAddExpense(true);
+  }
+
+  if (!booleanAddExpense){
+    return <button onClick={addHandler}> Add New Expense </button>
+  }
 
   return (
     <form onSubmit={onSubmit}>
@@ -52,7 +74,9 @@ const ExpenseForm = ({ onSaveExpense }) => {
         <label className="new-expense__controls">Location</label>
         <input value={enteredLocation} onChange={changeLocationHandler} />
       </div>
+      <br></br>
       <div className="new-expense__actions">
+        <button onClick={cancelHandler}> Cancel </button>
         <button type="submit"> Add </button>
       </div>
     </form>
