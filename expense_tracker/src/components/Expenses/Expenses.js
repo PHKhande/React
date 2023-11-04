@@ -16,12 +16,15 @@ const Expenses = ({allExpenses}) => {
       <h1>Expense Items</h1>
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
       {allExpenses.map((ele) => {
-        return (
-          <ExpenseItem
-            key={ele.id}
-            expense={ele}
-          />
-        );
+        if(ele.date.toString().includes(filteredYear)){
+          return (
+            <ExpenseItem
+              key={ele.id}
+              expense={ele}
+            />
+          );
+
+        } else return null
       })}
     </Card>
   );
